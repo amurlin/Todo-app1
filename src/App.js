@@ -8,6 +8,7 @@ function App() {
   const [newTask, setNewTask] = useState("");
   const [filterState, setFilterState] = useState("ALL");
 
+
   const handleTaskChange = (event) => {
     setNewTask(event.target.value);
   };
@@ -46,19 +47,20 @@ function App() {
 
   return (
     <div className="App">
+     <h3>To-Do List</h3>
      <div className='addTask'>
       <input 
-      placeholder='Add to do' 
+      placeholder='Add a new task...' 
       value={newTask} 
       onChange={handleTaskChange} 
       />
       {error.length > 1 && <div>{error}</div>}
-      <button onClick={addTask}>Add Task</button>
+      <button className='addButton' onClick={addTask}>Add</button>
      </div>
-     <div>
-      <div onClick={() => handleFilterState("ALL")} style={{color: filterState === "ALL" ? "red" : "green"}}>all</div>
-      <div onClick={() => handleFilterState("ACTIVE")}>active</div>
-      <div onClick={() => handleFilterState("DONE")}>completed</div>
+     <div className='status'>
+      <button className={`statusButton ${filterState == "ALL"? "active": ""}`} onClick={() => handleFilterState("ALL")}>all</button>
+      <button className={`statusButton ${filterState == "ACTIVE"? "active": ""}`} onClick={() => handleFilterState("ACTIVE")}>active</button>
+      <button className={`statusButton ${filterState == "DONE"? "active": ""}`} onClick={() => handleFilterState("DONE")}>completed</button>
      </div>
      <div className='list'>
      {todo
@@ -70,10 +72,12 @@ function App() {
       }
      })
      .map((todo) => (
-        <div key={todo.id}>
-          <input type='checkbox'  onChange={() => handleCkeckBox(todo.id)}/>
+        <div className='taskBox' key={todo.id}>
+          <div style={{display: 'flex', alignItems: 'center'}}>
+          <input className='checkBox' type='checkbox'  onChange={() => handleCkeckBox(todo.id)}/>
           {todo.text}
-          <button onClick={() => deleteTask(todo)}>delete</button>
+          </div>
+          <button className='deleteButton' onClick={() => deleteTask(todo)}>Delete</button>
         </div>
      ))}
      </div>
