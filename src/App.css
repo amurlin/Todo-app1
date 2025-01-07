@@ -31,14 +31,13 @@ body {
   display: flex;
   flex-direction: row;
   gap: 12px;
-
-
+  margin-left: -130px;
 }
  
 button {
   border: none;
   border-radius: 6px;
-
+  cursor: pointer;
 }
 
 .addButton {
@@ -59,21 +58,20 @@ button {
   align-items: center;
   gap: 10px;
   color: black;
-  background-color: F3F4F6;
+  background-color: #F3F4F6;
 }
 
 .active{
   color:white; 
-  background: #3C82F6
+  background: #3C82F6;
 }
 
 input {
   padding: 8px 16px;
   height: 23px;
-  width: 75%;
+  width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.075);
   border-radius: 6px;
-  
 }
 
 h3 {
@@ -91,6 +89,7 @@ h3 {
   height: 20px;
   border: 1px solid rgba(0, 0, 0, 0.075);
   margin-right: 6px;
+  background-color: #3C82F6;
 }
 
 .taskBox {
@@ -105,6 +104,10 @@ h3 {
   border-radius: 6px;
 }
 
+/* .done {
+  text-decoration: line-through;
+} */
+
 text {
   margin: 0;
 }
@@ -116,6 +119,14 @@ text {
   justify-content: center;
   color: #EF4444;
   background-color: #FEF2F2;
+}
+
+.PoweredByPinecone {
+  display: flex; 
+  flex-direction: row;
+  font-size: 12px;
+  align-items: center; 
+  gap:6px;
 }
 
 
