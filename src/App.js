@@ -28,7 +28,7 @@ function App() {
   const handleCkeckBox = (id) => {
     const newTodos = todo.map((todo) => {
       if (todo.id === id) {
-        return {...todo, status: "DONE"};
+        return {...todo, status: "DONE"}; //? "ACTIVE" : "DONE"
       } else {
         return todo;
       }
@@ -47,11 +47,17 @@ function App() {
     setTodo(newTodos);
   };  
 
+  // duussan taskuudaa ustgana
+  const clearCompleted = (task) => {
+    const newTodos = todo.filter(((todo) => todo.status === "ACTIVE")).filter((todo) => todo.id !== task.id);
+    setTodo(newTodos);
+  }
+
   return (
     <div className="App">
      <h3>To-Do List</h3>
      <div className='addTask'>
-        <div style={{display: 'flex', flexDirection: 'column', gap: '6px'}}>
+        <div style={{display: 'flex', flexDirection: 'column', gap: '6px',width: "70%"}}>
           <input 
           placeholder='Add a new task...' 
           value={newTask} 
@@ -90,14 +96,16 @@ function App() {
             return todo.status === filterState;
           }
         })
-        .map((todo) => (
-          <div className={`taskBox ${todo.status === "DONE" ? "done" : ""}`} key={todo.id}>
+        .map((todo, index) => (
+          <div className={`taskBox`} key={index}>
             <div style={{display: 'flex', alignItems: 'center'}}>
               <input 
-              className='checkBox' 
-              type='checkbox'  
-              onChange={() => handleCkeckBox(todo.id)}/>
-              {todo.text}
+                className='checkBox' 
+                type='checkbox' 
+                checked={todo.status === "DONE"}
+                onChange={() => handleCkeckBox(todo.id)}
+              />
+              <p className={` ${todo.status === "DONE" ? "done" : ""}`}>{todo.text}</p>
             </div>
             <button 
             className='deleteButton' 
@@ -108,8 +116,15 @@ function App() {
         ))
       )}
      </div>
+     <hr/>
+     <div className='completedTask'>
+      {todo.filter((todo => todo.status === "DONE")).length} of {todo.length} tasks completed
+      <button className='clearCompleted' onClick={() => clearCompleted(todo)}> 
+        Clear Completed
+      </button>
+     </div>
      <div className="PoweredByPinecone">
-      <p className='text'>Powered by</p>
+      <p className='text' style={{color: '#6B7280'}}>Powered by</p>
       <a href='https://pinecone.mn/' style={{textDecoration: 'none', cursor: 'pointer', color: '#3C82F6'}}>Pinecone Academy</a>
      </div>
     </div>
