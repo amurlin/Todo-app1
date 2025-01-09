@@ -66,6 +66,10 @@ button {
   background: #3C82F6;
 }
 
+.defualt {
+  color: #363636;
+}
+
 input {
   padding: 8px 16px;
   height: 23px;
@@ -74,9 +78,14 @@ input {
   border-radius: 6px;
 }
 
+input:hover {
+  border: 2px solid #3C82F6;
+}
+
 h3 {
   margin: 0;
   font-size: 20px;
+  font-weight: 600;
 }
 
 .list {
