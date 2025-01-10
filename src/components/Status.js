@@ -1,5 +1,5 @@
-import React from 'react'
-import { Button } from './Button'
+import React from 'react';
+import { Button } from './Button';
 
 export const Status = (props) => {
     const {setFilterState, filterState} = props;
@@ -9,17 +9,17 @@ export const Status = (props) => {
   return (
     <div className="status">
             <Button
-              className={`statusButton ${filterState === "ALL" ? "active" : "defualt"}`}
+              className={`statusButton ${filterState === "ALL" ? "active" : "default"}`}
               handleEvent={() => handleFilterState("ALL")}
               title={"All"}
             />
             <Button
-              className={`statusButton ${filterState === "ACTIVE" ? "active" : "defualt"}`}
+              className={`statusButton ${filterState === "ACTIVE" ? "active" : "default"}`}
               handleEvent={() => handleFilterState("ACTIVE")}
               title={"Active"}
             />
             <Button
-              className={`statusButton ${filterState === "DONE" ? "active" : "defualt"}`}
+              className={`statusButton ${filterState === "DONE" ? "active" : "default"}`}
               handleEvent={() => handleFilterState("DONE")}
               title={"Completed"}
             />

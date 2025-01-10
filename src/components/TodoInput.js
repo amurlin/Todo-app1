@@ -1,9 +1,9 @@
-import { Button } from "./Button";
 import React, { useState } from "react";
+import { Button } from "./Button";
 import { v4 as uuidv4 } from "uuid";
 
 export const TodoInput = (props) => {
-  const { setError, setTodo, todo, error } = props;
+  const { setError, setTodos, todos, error } = props;
   const [newTask, setNewTask] = useState("");
 
   
@@ -17,8 +17,15 @@ export const TodoInput = (props) => {
     if (newTask.length === 0) {
       setError("* Please enter a task.");
     } else {
+      const currenDate = new Date ();
+      const formattedDate = `${currenDate.getMonth() + 1}/ ${currenDate.getDate()}/${currenDate.getFullYear()}`;
+      const formattedTime = currenDate.toLocaleDateString();
+
+      console.log(`Task Added: "${newTask}" on ${formattedDate} at ${formattedTime}`);
+      
+
       // tshine taskaa todo ruu nemne
-      setTodo([...todo, { text: newTask, id: uuidv4(), status: "ACTIVE" }]); // '...todo' ni huuchin baisan bud todo-g n hadgaldag
+      setTodos([...todos, { text: newTask, id: uuidv4(), status: "ACTIVE" }]); // '...todo' ni huuchin baisan bud todo-g n hadgaldag
       setNewTask("");
       setError("");
     }

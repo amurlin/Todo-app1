@@ -1,28 +1,28 @@
-import React from 'react'
+import React from 'react';
 import { Button } from './Button';
 
 export const Footer = (props) => {
-    const {todo, setTodo} = props;
+    const {todos, setTodos} = props;
 
     // duussan taskuudaa ustgana
   const clearCompleted = (task) => {
-    const newTodos = todo
-      .filter((todo) => todo.status === "ACTIVE")
-      .filter((todo) => todo.id !== task.id);
-    setTodo(newTodos);
+    const newTodos = todos
+      .filter((todos) => todos.status === "ACTIVE")
+      .filter((todos) => todos.id !== task.id);
+    setTodos(newTodos);
   };
 
   
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
-      {todo.length > 0 && (  // Only render this if there are tasks
+      {todos.length > 0 && (
         <>
           <hr />
           <div className="completedTask">
-            {todo.filter((task) => task.status === "DONE").length} of {todo.length}{" "}
+            {todos.filter((task) => task.status === "DONE").length} of {todos.length}{" "}
             tasks completed
-            <Button className={'clearCompleted'} handleEvent={() => clearCompleted(todo)} title={"Clear Completed"} />
+            <Button className={'clearCompleted'} handleEvent={() => clearCompleted(todos)} title={"Clear Completed"} />
           </div>
         </>
       )}

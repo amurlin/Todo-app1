@@ -6,7 +6,7 @@ import { List } from "./components/List";
 import { Footer } from "./components/Footer";
 
 function App() {
-  const [todo, setTodo] = useState([]);
+  const [todos, setTodos] = useState([]);
   const [error, setError] = useState("");
   const [filterState, setFilterState] = useState("ALL");
 
@@ -15,13 +15,13 @@ function App() {
       <h3>To-Do List</h3>
       <TodoInput
         setError={setError}
-        setTodo={setTodo}
-        todo={todo}
+        setTodos={setTodos}
+        todos={todos}
         error={error}
       />
       <Status setFilterState={setFilterState} filterState={filterState} />
-      <List todo={todo} setTodo={setTodo} filterState={filterState} />
-      <Footer todo={todo} setTodo={setTodo} />
+      <List todos={todos} setTodos={setTodos} filterState={filterState} />
+      <Footer todos={todos} setTodos={setTodos} />
     </div>
   );
 }
